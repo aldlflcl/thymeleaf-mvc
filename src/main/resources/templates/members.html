@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout :: layout(~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>전체</title>
+</head>
+<body>
+<main>
+
+    <div class="row py-5">
+        <div class="col">
+            <button class="btn btn-success float-end"
+                th:onclick="|location.href='@{/members/add}'|"
+            >멤버 추가</button>
+        </div>
+    </div>
+
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>이름</th>
+            <th>주소</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td><a href="member.html" th:href="@{|/members/${member.id}|}" th:text="${member.id}">아이디</a></td>
+            <td><a href="member.html" th:href="@{|/members/${member.id}|}" th:text="${member.name}">이름</a></td>
+            <td th:text="${member.address}">주소</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
